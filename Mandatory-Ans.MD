@@ -579,3 +579,46 @@ We ensured backward compatibility for APIs and database changes to avoid issues 
 - ArgoCD Git revert → best for GitOps consistency  
 
 </details>
+
+
+
+### CI/CD - Jenkins 
+
+<details>
+<summary><b>Jenkins Pipeline Failed — How do you troubleshoot?</b></summary>
+
+<br>
+
+In case a Jenkins pipeline fails, I follow a structured troubleshooting approach to quickly identify and resolve the issue.
+
+First, I check the Jenkins console output logs to identify at which stage the failure occurred—whether it is during code checkout, build, test, or deployment.
+
+If the issue is during the build stage, I verify dependencies, build tools like Maven or npm, and check for any compilation errors.
+
+If the failure is related to code quality or security stages, I review SonarQube quality gate results or Trivy scan reports to understand the reason.
+
+If the issue occurs during Docker build or push, I check the Dockerfile, image tagging, and registry authentication.
+
+For deployment failures, I verify Kubernetes configurations, such as manifests, Helm charts, and check pod status using commands like kubectl get pods and kubectl describe pod.
+
+I also check if there are any environment variable or credential issues configured in Jenkins.
+
+If needed, I try to reproduce the issue locally or re-run the failed stage to confirm if it is a transient issue.
+
+Overall, I follow a step-by-step debugging approach to quickly identify the root cause and fix the pipeline.
+
+---
+
+🧠 Easy Way to Remember (Use this in mind)
+
+👉 LOG → STAGE → TOOL → FIX
+
+- Console output Logs check
+- Stage identify - Build, Test, Docker Build
+- Tool-specific issue
+- Fix
+- Re-run
+
+Additionally, If the failed pipeline logs are not clear. I will check the previous success pipeline logs.
+
+</details>
