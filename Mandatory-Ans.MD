@@ -2,12 +2,11 @@
 
 ---
 
-## 1. Tell me about yourself
-
 <details>
-<summary>1. Tell me about yourself</summary>
+<summary>## 1. Tell me about yourself</summary>
 
 Hi, thanks for the opportunity.  
+
 I’m Naveen Thrukapally, and I have around 4 years of experience as a DevOps Engineer, focusing on building scalable and automated deployment systems.
 
 In my current role, I work extensively with Docker and Kubernetes, where I containerize applications and manage production deployments, helping improve scalability and maintain high availability.
