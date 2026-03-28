@@ -86,7 +86,7 @@ Overall, my role was to ensure smooth, automated, and reliable deployments.
 </details>
 
 <details>
-<summary><b>Question: Explain your CI/CD pipeline</b></summary>
+<summary><b>3. Explain your CI/CD pipeline</b></summary>
 
 <br>
 
