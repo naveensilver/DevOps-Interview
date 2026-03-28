@@ -5,7 +5,7 @@
 ## 1. Tell me about yourself
 
 <details>
-<summary>Click to expand answer</summary>
+<summary>1. Tell me about yourself</summary>
 
 Hi, thanks for the opportunity.  
 I’m Naveen Thrukapally, and I have around 4 years of experience as a DevOps Engineer, focusing on building scalable and automated deployment systems.
