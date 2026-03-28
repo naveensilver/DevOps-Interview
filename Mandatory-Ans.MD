@@ -196,7 +196,7 @@ Say:
 ## Collaboration with Dev and QA Teams
 
 <details>
-<summary>5. What do you do when you collaborate with Dev and QA teams?</summary>
+<summary><b>5. What do you do when you collaborate with Dev and QA teams?</b></summary>
 
 When I collaborate with development and QA teams, my focus is to ensure smooth and reliable releases.
 
@@ -236,5 +236,56 @@ Overall, my role is to act as a bridge between development and QA teams to ensur
 ### 🎯 Quick Fallback Answer
 
 “I help developers with builds and deployments, and QA with testing environments and debugging issues.”
+
+</details>
+
+
+## Zero Downtime Deployment
+
+<details>
+<summary><b>* How do you handle zero-downtime deployment in production?</b></summary>
+
+To achieve zero-downtime deployments, we use deployment strategies and Kubernetes features that ensure the application remains available during updates.
+
+In our project, we primarily used rolling updates in Kubernetes Deployments. This ensures that new pods are created gradually while old pods are terminated only after the new ones become ready.
+
+We configure parameters like maxUnavailable and maxSurge to control how many pods can go down or be added during the update, ensuring no service interruption.
+
+We also define readiness and liveness probes so that traffic is only routed to healthy pods.
+
+In some cases, we use Blue-Green or Canary deployment strategies.  
+In Blue-Green, we deploy a new version alongside the old one and switch traffic only after validation.  
+In Canary, we release the new version to a small percentage of users and gradually increase traffic.
+
+Additionally, we use tools like ArgoCD for controlled deployments and quick rollback in case of failures.
+
+Overall, by combining rolling updates, health checks, and proper deployment strategies, we ensure zero downtime and high availability in production.
+
+---
+
+### 🧠 Simple Way to Remember
+
+**4 Pillars:**
+1. Rolling Updates (default in Kubernetes)
+2. Health Checks (Readiness probe is critical)
+3. Deployment Strategies (Blue-Green, Canary)
+4. Rollback (quick recovery)
+
+### 💥 Real Example
+
+In our project, we used rolling updates with readiness probes to ensure new pods were ready before terminating old ones, which helped us achieve zero downtime during deployments.
+
+### 🔥 Pro-Level Add-On
+
+We also ensured backward compatibility of APIs and database changes to avoid breaking running traffic during deployments.
+
+### 🎯 Follow-up Question
+
+**Q: What can break zero downtime?**
+
+- Missing readiness probe
+- Breaking DB changes
+- Sudden traffic switch
+- Wrong deployment configuration
 
 </details>
