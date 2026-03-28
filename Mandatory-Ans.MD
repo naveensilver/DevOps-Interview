@@ -1,7 +1,5 @@
 ## DevOps Interview Preparation
 
----
-
 <details>
 <summary><b>1. Tell me about your-self</b></summary>
 
@@ -77,8 +75,6 @@ Overall, my role was to ensure smooth, automated, and reliable deployments.
 7️⃣ Monitoring (Prometheus + Grafana)  
 8️⃣ Troubleshooting (real issues)
 
----
-
 ### 💥 Pro Tip (Say if needed)
 
 “We focused on automation and zero-downtime deployments to improve reliability and release speed.”
@@ -123,15 +119,11 @@ This pipeline helped us automate deployments, reduce manual errors, and signific
 7️⃣ Deploy (ArgoCD → Kubernetes)  
 8️⃣ Monitor (Prometheus + Grafana)
 
----
-
 ### 💥 Real-World Add-On (Important)
 
 - Implemented rollback strategy for failed deployments  
 - Used versioned Docker images for traceability  
 - Ensured zero-downtime deployments using Kubernetes rolling updates  
-
----
 
 ### 🎯 Follow-Up Ready
 
@@ -186,13 +178,9 @@ Overall, my goal is to ensure reliable, fast, and smooth delivery of application
 6️⃣ Troubleshooting (issues fixing)  
 7️⃣ Improvement (automation + optimization)
 
----
-
 ### 💥 Pro-Level Add-On
 
 “I also ensure proper communication between Dev and QA teams so that releases are not delayed and issues are resolved quickly.”
-
----
 
 ### 🎯 Follow-Up Ready
 
@@ -202,5 +190,51 @@ Overall, my goal is to ensure reliable, fast, and smooth delivery of application
 Say:
 
 “I focus on improving automation, optimizing pipelines, and reducing manual effort to make the system more efficient.”
+
+</details>
+
+## Collaboration with Dev and QA Teams
+
+<details>
+<summary>5. What do you do when you collaborate with Dev and QA teams?</summary>
+
+When I collaborate with development and QA teams, my focus is to ensure smooth and reliable releases.
+
+With the development team, I work closely on integrating their code changes into the CI/CD pipeline. I help them fix build issues, manage dependencies, and ensure proper Dockerization of applications. I also guide them on best practices like writing environment-agnostic code and using proper configuration management.
+
+With the QA team, I ensure that deployment environments are stable and consistent. I support them in setting up test environments, trigger deployments for testing, and help debug any issues they encounter during validation.
+
+If any issues arise during testing or deployment, I work with both teams to identify the root cause—whether it is code-related, configuration-related, or infrastructure-related—and resolve it quickly.
+
+Overall, my role is to act as a bridge between development and QA teams to ensure faster, smoother, and more reliable releases.
+
+---
+
+### 🧠 Simple Way to Remember
+
+🔵 With Developers:
+- Help in CI/CD integration  
+- Fix build issues  
+- Support Docker/image creation  
+- Guide best practices  
+
+🟢 With QA:
+- Provide stable environments  
+- Deploy builds for testing  
+- Help debug issues  
+
+
+### 💥 Real Examples
+
+- If a build fails due to dependency issues, I coordinate with developers to fix it and update the pipeline.  
+- If QA finds a bug in staging, I help analyze logs, configurations, and deployments to identify the issue.
+
+### 🔥 Pro-Level Add-On
+
+“I ensure smooth communication between teams so that issues are resolved quickly and releases are not delayed.”  
+
+### 🎯 Quick Fallback Answer
+
+“I help developers with builds and deployments, and QA with testing environments and debugging issues.”
 
 </details>
