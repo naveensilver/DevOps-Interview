@@ -581,31 +581,31 @@ We ensured backward compatibility for APIs and database changes to avoid issues 
 </details>
 
 <details>
-<summary><br><b>Application is down in production – How will you troubleshoot?</b></summary>
+<summary><b>Application is down in production – How will you troubleshoot?</b></summary>
 
 <br>
 
 # 🔥 Perfect Answer (Production-Level)
 
-> “If the application is down in production, I would approach it in a structured way.
+“If the application is down in production, I would approach it in a structured way.
 
-> First, I would try to understand the impact—whether it’s a complete outage or partial degradation, and check if any alerts were triggered in monitoring tools like Prometheus or Grafana.
+First, I would try to understand the impact—whether it’s a complete outage or partial degradation, and check if any alerts were triggered in monitoring tools like Prometheus or Grafana.
 
-> Next, I would check the application layer by verifying pod status using `kubectl get pods` and inspect logs using `kubectl logs` to identify any runtime errors.
+Next, I would check the application layer by verifying pod status using `kubectl get pods` and inspect logs using `kubectl logs` to identify any runtime errors.
 
-> If pods are not running, I would check Kubernetes events and describe the pod using `kubectl describe pod` to see if there are issues like resource limits, image pull errors, or crash loops.
+If pods are not running, I would check Kubernetes events and describe the pod using `kubectl describe pod` to see if there are issues like resource limits, image pull errors, or crash loops.
 
-> Then, I would verify the infrastructure layer by checking node status using `kubectl get nodes` and ensure the cluster is healthy.
+Then, I would verify the infrastructure layer by checking node status using `kubectl get nodes` and ensure the cluster is healthy.
 
-> I would also check the networking layer—like service endpoints, ingress configuration, or load balancer health—to ensure traffic is correctly routed.
+I would also check the networking layer—like service endpoints, ingress configuration, or load balancer health—to ensure traffic is correctly routed.
 
-> If the issue is due to a recent deployment, I would quickly rollback to the previous stable version using ArgoCD or Kubernetes rollout undo.
+If the issue is due to a recent deployment, I would quickly rollback to the previous stable version using ArgoCD or Kubernetes rollout undo.
 
-> Once the application is restored, I would perform root cause analysis using logs and monitoring data, and implement preventive measures like better alerts, resource tuning, or pipeline checks to avoid similar issues in future.”
+Once the application is restored, I would perform root cause analysis using logs and monitoring data, and implement preventive measures like better alerts, resource tuning, or pipeline checks to avoid similar issues in future.”
 
 ---
 
-# 🧠 How to Remember (Simple Framework)
+### 🧠 How to Remember (Simple Framework)
 
 👉 Always follow:
 
