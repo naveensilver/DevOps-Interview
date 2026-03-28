@@ -644,7 +644,7 @@ Once the application is restored, I would perform root cause analysis using logs
 
 > “My priority would always be to restore service quickly first, and then focus on root cause analysis.”
 
-<details>
+</details>
 
 ### CI/CD - Jenkins 
 
