@@ -243,7 +243,9 @@ Overall, my role is to act as a bridge between development and QA teams to ensur
 ## Zero Downtime Deployment
 
 <details>
-<summary><b>* How do you handle zero-downtime deployment in production?</b></summary>
+<summary><b> How do you handle zero-downtime deployment in production?</b></summary>
+
+<br>
 
 To achieve zero-downtime deployments, we use deployment strategies and Kubernetes features that ensure the application remains available during updates.
 
@@ -287,5 +289,165 @@ We also ensured backward compatibility of APIs and database changes to avoid bre
 - Breaking DB changes
 - Sudden traffic switch
 - Wrong deployment configuration
+
+</details>
+
+
+## Blue-Green Deployment
+
+<details>
+<summary><b>Can you explain Blue-Green deployment and how you implemented it?</b></summary>
+
+<br>
+
+Blue-Green deployment is a release strategy where we maintain two identical environments:
+
+- **Blue** → current live (production) version  
+- **Green** → new version to be deployed  
+
+Instead of updating the existing environment, we deploy the new version to the Green environment and test it.
+
+Once validated, we switch traffic from Blue to Green with minimal or zero downtime.
+
+### 🧠 How I Implemented in My Project
+
+In our Kubernetes setup, we implemented Blue-Green deployment using separate deployments and services.
+
+- We created two versions of deployments: `app-blue` and `app-green`
+- The Kubernetes Service was used to route traffic
+
+**Flow:**
+
+1. Existing version runs on **Blue**
+2. Deploy new version on **Green**
+3. Test Green environment (smoke testing / QA validation)
+4. Update Service selector to point from Blue → Green
+5. Monitor application
+6. Keep Blue as backup for quick rollback
+
+### 💥 Real Example
+
+In one release, we deployed the new version as Green and performed validation.  
+After successful testing, we switched the service traffic to Green.  
+When a minor issue was detected, we quickly rolled back by pointing traffic back to Blue.
+
+### 🎯 Easy Way to Remember
+
+**4 Steps:**
+
+1. Deploy → Green  
+2. Test → Green  
+3. Switch → Traffic  
+4. Rollback → If needed  
+
+</details>
+
+### Canary Deployment
+
+<details>
+<summary><b>Can you explain Canary deployment and how you implemented it in your project?</b></summary>
+
+<br>
+
+Canary deployment is a strategy where we release a new version of the application to a small subset of users first, instead of all users at once.
+
+This helps us test the new version in production with real traffic while minimizing risk.
+
+If everything works fine, we gradually increase traffic to the new version. If any issue occurs, we can quickly roll back without impacting all users.
+
+### 🧠 How I Implemented in My Project
+
+In our Kubernetes setup, we implemented Canary deployment using multiple deployments and controlled traffic routing.
+
+- We had two versions:
+  - Stable version (v1)
+  - Canary version (v2)
+
+**Flow:**
+
+1. Deploy new version as **Canary (v2)** with fewer replicas  
+2. Keep stable version (v1) handling most traffic  
+3. Use Kubernetes Service or Ingress (NGINX) to split traffic  
+4. Monitor metrics (errors, latency, CPU usage)  
+5. Gradually increase traffic to v2  
+6. If stable → promote v2 fully  
+7. If issues → rollback to v1  
+
+### 💥 Real Example
+
+In our project, we deployed a new version to 10% of traffic using canary deployment.  
+We monitored application logs and metrics using Prometheus and Grafana.  
+Once everything was stable, we gradually increased traffic to 100%.
+
+---
+
+### 🔥 Pro-Level Add-On
+
+We used automated monitoring alerts to detect failures early and stop canary rollout if error rates increased.
+
+### 🎯 Easy Way to Remember
+
+**4 Steps:**
+
+1. Deploy → Small traffic  
+2. Monitor → Metrics  
+3. Increase → Gradually  
+4. Rollback → If needed  
+
+### 🎯 Follow-up Question
+
+**Q: When to use Canary vs Blue-Green?**
+
+- Canary → When you want gradual rollout and testing with real users  
+- Blue-Green → When you want instant switch with full validation  
+
+</details>
+
+<details>
+<summary><b>When do you use Rolling, Blue-Green, and Canary deployment?</b></summary>
+
+<br>
+### 🧠 Interview-Ready Answer
+
+The choice of deployment strategy depends on risk, application criticality, and testing requirements.
+
+- **Rolling Updates** → Used for regular deployments where the application is stateless and we want simple, zero-downtime updates.
+
+- **Blue-Green Deployment** → Used when we need a full environment switch with quick rollback, especially for critical releases where we want to test the entire setup before going live.
+
+- **Canary Deployment** → Used when we want to release features gradually, monitor real user behavior, and minimize risk by exposing only a small percentage of users initially.
+
+**Summary:**  
+
+Rolling → simplicity  
+Blue-Green → safe full switch  
+Canary → controlled gradual release  
+
+---
+
+### 🎯 Easy Way to Remember (Decision Logic)
+
+🔵 **Rolling Update → Default**
+- Normal deployments  
+- Stateless apps  
+- No major risk  
+
+🟢 **Blue-Green → Full Switch + Quick Rollback**
+- Critical applications  
+- Need instant rollback  
+- Full validation before release  
+
+🟡 **Canary → Test with Real Users**
+- New features  
+- Risky changes  
+- Gradual rollout  
+
+---
+
+### 💥 Real-Time Examples
+
+- Bug fixes → Rolling update  
+- Major release → Blue-Green  
+- New features → Canary deployment  
 
 </details>
