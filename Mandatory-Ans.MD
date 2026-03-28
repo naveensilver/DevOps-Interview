@@ -1,4 +1,4 @@
-## DevOps Interview Preparation
+### DevOps Interview Preparation
 
 <details>
 <summary><b>1. Tell me about your-self</b></summary>
@@ -193,7 +193,7 @@ Say:
 
 </details>
 
-## Collaboration with Dev and QA Teams
+### Collaboration with Dev and QA Teams
 
 <details>
 <summary><b>5. What do you do when you collaborate with Dev and QA teams?</b></summary>
@@ -240,7 +240,7 @@ Overall, my role is to act as a bridge between development and QA teams to ensur
 </details>
 
 
-## Zero Downtime Deployment
+### Zero Downtime Deployment
 
 <details>
 <summary><b> How do you handle zero-downtime deployment in production?</b></summary>
@@ -448,8 +448,6 @@ Canary → controlled gradual release
 
 ### Production Senarios
 
----
-
 <details>
 <summary><b>1. Application is down in production – How will you troubleshoot?</b></summary>
 
@@ -479,38 +477,38 @@ Once the application is restored, I would perform root cause analysis using logs
 
 👉 Always follow:
 
-### 1. Impact
+1. Impact
 
 * Full down or partial?
 
-### 2. Application Layer
+2. Application Layer
 
 * Pods  
 * Logs  
 
-### 3. Kubernetes Layer
+3. Kubernetes Layer
 
 * Events  
 * Describe  
 
-### 4. Infrastructure Layer
+4. Infrastructure Layer
 
 * Nodes  
 * Cluster health  
 
-### 5. Network Layer
+5. Network Layer
 
 * Service / Ingress / LB  
 
-### 6. Immediate Fix
+6. Immediate Fix
 
 * Restart / Rollback  
 
-### 7. Prevention
+7. Prevention
 
 * Alerts / Monitoring / RCA  
 
-# 🔥 Pro Upgrade Line (Add this at end)
+#### 🔥 Pro Upgrade Line (Add this at end)
 
 > “My priority would always be to restore service quickly first, and then focus on root cause analysis.”
 
@@ -559,7 +557,7 @@ In our project, this setup helped us proactively detect issues and reduce downti
 
 (+ Logs → EFK)
 
-####💥 Real Metrics You Can Mention
+#### 💥 Real Metrics You Can Mention
 
 * CPU / Memory usage  
 * Pod restarts  
