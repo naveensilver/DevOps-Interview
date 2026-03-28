@@ -746,7 +746,7 @@ Additionally, If the failed pipeline logs are not clear. I will check the previo
 
 </details>
 
-#### Secrets Handling
+### Secrets Handling
 
 <details>
 <summary><b>How do you handle secrets across Kubernetes, Jenkins, and cloud (with real-time example)?</b></summary>
