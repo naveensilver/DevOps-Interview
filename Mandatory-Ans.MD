@@ -1,9 +1,9 @@
-# DevOps Interview Preparation
+## DevOps Interview Preparation
 
 ---
 
 <details>
-<summary>## 1. Tell me about yourself</summary>
+<summary>1. Tell me about yourself</summary>
 
 Hi, thanks for the opportunity.  
 
