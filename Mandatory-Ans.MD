@@ -292,9 +292,6 @@ We also ensured backward compatibility of APIs and database changes to avoid bre
 
 </details>
 
-
-## Blue-Green Deployment
-
 <details>
 <summary><b>Can you explain Blue-Green deployment and how you implemented it?</b></summary>
 
@@ -341,8 +338,6 @@ When a minor issue was detected, we quickly rolled back by pointing traffic back
 4. Rollback → If needed  
 
 </details>
-
-### Canary Deployment
 
 <details>
 <summary><b>Can you explain Canary deployment and how you implemented it in your project?</b></summary>
@@ -407,6 +402,7 @@ We used automated monitoring alerts to detect failures early and stop canary rol
 <summary><b>When do you use Rolling, Blue-Green, and Canary deployment?</b></summary>
 
 <br>
+
 ### 🧠 Interview-Ready Answer
 
 The choice of deployment strategy depends on risk, application criticality, and testing requirements.
@@ -442,12 +438,144 @@ Canary → controlled gradual release
 - Risky changes  
 - Gradual rollout  
 
----
-
 ### 💥 Real-Time Examples
 
 - Bug fixes → Rolling update  
 - Major release → Blue-Green  
 - New features → Canary deployment  
+
+</details>
+
+
+## Rollback Strategy (Kubernetes + ArgoCD + Helm)
+
+<details>
+<summary><b>How did you handle rollback in your project?</b></summary>
+
+### 🧠 Interview-Ready Answer
+
+In our project, we implemented rollback strategies at multiple levels to quickly recover from failures and ensure minimal downtime.
+
+---
+
+### 🔧 Kubernetes Level Rollback
+
+Kubernetes automatically maintains previous ReplicaSets during rolling updates.
+
+Rollback command:
+
+```bash
+kubectl rollout undo deployment <deployment-name>
+```
+
+Check rollout history:
+
+```bash
+kubectl rollout history deployment <deployment-name>
+```
+
+Rollback to a specific revision:
+
+```bash
+kubectl rollout undo deployment <deployment-name> --to-revision=<revision-number>
+```
+
+---
+
+### 🚀 Helm Rollback
+
+Helm maintains version history for each deployment (release revisions).
+
+Check release history:
+
+```bash
+helm history <release-name>
+```
+
+Rollback to previous version:
+
+```bash
+helm rollback <release-name> <revision-number>
+```
+
+Verify status:
+
+```bash
+helm status <release-name>
+```
+
+---
+
+### 🔄 ArgoCD Rollback (GitOps)
+
+We followed GitOps, where Git is the source of truth.
+
+#### Method 1: Git Revert (Preferred)
+
+```bash
+git revert <commit-id>
+git push origin main
+```
+
+👉 ArgoCD automatically syncs and restores the previous stable state.
+
+
+#### Method 2: ArgoCD CLI
+
+Check application history:
+
+```bash
+argocd app history <app-name>
+```
+
+Rollback to previous revision:
+
+```bash
+argocd app rollback <app-name> <revision-id>
+```
+
+#### Method 3: ArgoCD UI
+
+- Open ArgoCD Dashboard  
+- Select application  
+- Go to **History and Rollback**  
+- Choose previous revision → Click **Rollback**
+
+---
+
+### 💥 Real Production Scenario
+
+In one release, a new deployment caused high error rates.
+
+- Detected via Prometheus alerts  
+- Checked logs and identified issue  
+- Performed Helm rollback  
+- ArgoCD synced automatically  
+- Service restored within minutes  
+
+---
+
+### 🔥 Pro-Level Add-On
+
+We ensured backward compatibility for APIs and database changes to avoid issues during rollback.
+
+### 🎯 Easy Way to Remember
+
+**3 Levels of Rollback:**
+
+1. Kubernetes → `kubectl rollout undo`  
+2. Helm → `helm rollback`  
+3. ArgoCD → `git revert` / `argocd rollback`  
+
+👉 **“Undo → Helm → Git”**
+
+---
+
+### 🎯 Follow-up Question
+
+**Q: Which rollback is fastest?**
+
+- Helm rollback → fastest and controlled  
+- ArgoCD Git revert → best for GitOps consistency  
 
 </details>
