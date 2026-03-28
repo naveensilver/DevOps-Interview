@@ -446,12 +446,16 @@ Canary → controlled gradual release
 
 </details>
 
+### Production Senarios
+
+---
+
 <details>
-<summary><b>Application is down in production – How will you troubleshoot?</b></summary>
+<summary><b>1. Application is down in production – How will you troubleshoot?</b></summary>
 
 <br>
 
-# 🔥 Perfect Answer (Production-Level)
+#### 🔥 Perfect Answer (Production-Level)
 
 “If the application is down in production, I would approach it in a structured way.
 
@@ -509,6 +513,64 @@ Once the application is restored, I would perform root cause analysis using logs
 # 🔥 Pro Upgrade Line (Add this at end)
 
 > “My priority would always be to restore service quickly first, and then focus on root cause analysis.”
+
+</details>
+
+<details>
+<summary><b>2. How do you monitor a Kubernetes cluster in production?</b></summary>
+
+<br>
+
+#### 🔥 Perfect Answer (Production-Level)
+
+### 👉 “How do you monitor a Kubernetes cluster in production?”
+
+“In production, we monitor Kubernetes clusters using a combination of metrics, logs, and alerts.
+
+For metrics monitoring, we use Prometheus. It collects metrics from different components like nodes, pods, and Kubernetes API using exporters such as node exporter and kube-state-metrics.
+
+For visualization, we use Grafana dashboards, where we track key metrics like CPU usage, memory usage, pod status, and network traffic.
+
+For application and system logs, we use centralized logging solutions like EFK (Elasticsearch, Fluentd, Kibana) or similar tools to collect and analyze logs from all pods.
+
+We also set up alerting using Prometheus Alertmanager, which sends alerts to email or Slack when thresholds are breached, such as high CPU usage, pod crashes, or node failures.
+
+In our project, this setup helped us proactively detect issues and reduce downtime by quickly identifying and resolving problems.”
+
+---
+
+#### 🧠 Simple Way to Remember
+
+👉 3 pillars:
+
+1. Metrics
+
+* Prometheus  
+* Node Exporter  
+* kube-state-metrics  
+
+2. Visualization
+
+* Grafana dashboards  
+
+3. Alerts
+
+* Alertmanager  
+
+(+ Logs → EFK)
+
+####💥 Real Metrics You Can Mention
+
+* CPU / Memory usage  
+* Pod restarts  
+* Node health  
+* Request latency  
+
+#### 🔥 Pro-Level Add-On (Say this to stand out)
+
+“We also created custom dashboards and alerts based on application SLAs to detect issues before users are impacted.”
+
+🔥 This = senior thinking
 
 </details>
 
