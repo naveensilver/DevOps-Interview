@@ -146,3 +146,61 @@ If interviewer asks:
 “We use previous stable Docker image or revert Git changes in ArgoCD.”
 
 </details>
+
+<details>
+<summary><b>4. What are your day-to-day activities as a DevOps Engineer?</b></summary>
+
+<br>
+
+### ✅ Answer (Interview Ready)
+
+As a DevOps engineer, my day-to-day activities involve managing CI/CD pipelines, deployments, infrastructure, and monitoring and supporting development teams to ensure smooth application delivery.
+
+I usually start my day by checking monitoring dashboards like Grafana and Prometheus to see if there are any alerts, failures, or performance issues in the system.
+
+Then I look into Jenkins pipelines to verify if any builds or deployments have failed. If there are failures, I troubleshoot and fix them to keep the pipeline stable.
+
+I work closely with developers to support code deployments, help resolve build issues, and ensure their changes are properly integrated into the CI/CD pipeline.
+
+For deployments, I manage applications on Kubernetes using Helm, making sure releases are smooth and there is no downtime.
+
+I also handle infrastructure tasks using Terraform, like provisioning or updating AWS resources when required.
+
+Apart from this, I spend time troubleshooting issues such as pod failures, service communication problems, or performance bottlenecks.
+
+If there are no major issues, I focus on improving automation, optimizing pipelines, and enhancing monitoring or security.
+
+Overall, my goal is to ensure reliable, fast, and smooth delivery of applications.
+
+---
+
+### 🧠 Easy Structure to Remember
+
+👉 Think in this flow:
+
+1️⃣ Monitoring (Grafana / alerts)  
+2️⃣ CI/CD (Jenkins pipelines)  
+3️⃣ Collaboration (Dev support)  
+4️⃣ Deployment (Kubernetes + Helm)  
+5️⃣ Infrastructure (Terraform + AWS)  
+6️⃣ Troubleshooting (issues fixing)  
+7️⃣ Improvement (automation + optimization)
+
+---
+
+### 💥 Pro-Level Add-On
+
+“I also ensure proper communication between Dev and QA teams so that releases are not delayed and issues are resolved quickly.”
+
+---
+
+### 🎯 Follow-Up Ready
+
+👉 If interviewer asks:
+“What if there is no issue?”
+
+Say:
+
+“I focus on improving automation, optimizing pipelines, and reducing manual effort to make the system more efficient.”
+
+</details>
