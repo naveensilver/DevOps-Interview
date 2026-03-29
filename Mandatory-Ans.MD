@@ -833,8 +833,6 @@ This approach ensures secrets are centrally managed, securely accessed, and neve
 
 Application deployment in Kubernetes means **running containerized apps inside a cluster using Kubernetes resources like Deployments, Services, and Ingress**.
 
----
-
 ### ✅ Why
 
 We use Kubernetes deployment to:
@@ -842,8 +840,6 @@ We use Kubernetes deployment to:
 * Automate application rollout
 * Ensure high availability
 * Enable scaling and self-healing
-
----
 
 ### ✅ How (Step-by-Step Flow)
 
@@ -892,8 +888,6 @@ We use Kubernetes deployment to:
 
 * HPA scales pods based on CPU/memory
 * Logs monitored using tools (ELK / CloudWatch)
-
----
 
 ### ✅ Real Example
 
