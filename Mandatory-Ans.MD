@@ -823,3 +823,113 @@ This approach ensures secrets are centrally managed, securely accessed, and neve
 → Through service account mapped IAM role  
 
 </details>
+
+--------------------------------------------
+
+<details>
+<summary><b>How your application is deployed in Kubernetes step-by-step?</b></summary>
+
+### ✅ What
+
+Application deployment in Kubernetes means **running containerized apps inside a cluster using Kubernetes resources like Deployments, Services, and Ingress**.
+
+---
+
+### ✅ Why
+
+We use Kubernetes deployment to:
+
+* Automate application rollout
+* Ensure high availability
+* Enable scaling and self-healing
+
+---
+
+### ✅ How (Step-by-Step Flow)
+
+#### 🔹 Step 1: Code Push
+
+* Developer pushes code to GitHub
+
+#### 🔹 Step 2: CI Pipeline (Jenkins)
+
+* Jenkins pipeline triggers automatically
+* Runs:
+
+  * Build
+  * Unit tests
+  * Docker image creation
+
+#### 🔹 Step 3: Docker Image
+
+* Build Docker image using Dockerfile
+* Push image to registry (ECR/DockerHub)
+
+#### 🔹 Step 4: CD (ArgoCD / Helm)
+
+* Update image tag in Helm values or Kubernetes manifests
+* ArgoCD detects changes from Git and syncs
+
+#### 🔹 Step 5: Kubernetes Deployment
+
+* Kubernetes creates:
+
+  * **Deployment** → manages pods
+  * **ReplicaSet** → ensures desired pod count
+  * **Pods** → actual containers running app
+
+#### 🔹 Step 6: Service Exposure
+
+* Create **Service (ClusterIP / NodePort / LoadBalancer)**
+* Allows internal/external communication
+
+#### 🔹 Step 7: Ingress (Optional)
+
+* Expose app using domain name
+* Route traffic using Ingress controller
+
+#### 🔹 Step 8: Scaling & Monitoring
+
+* HPA scales pods based on CPU/memory
+* Logs monitored using tools (ELK / CloudWatch)
+
+---
+
+### ✅ Real Example
+
+“In my project:
+
+* Code is pushed to GitHub
+* Jenkins builds Docker image and pushes to AWS ECR
+* Helm charts are updated with new image tag
+* ArgoCD automatically deploys to EKS cluster
+* Kubernetes creates pods and exposes via LoadBalancer
+* We used HPA for auto-scaling based on CPU usage”
+
+### 🚨 Real-world Issues
+
+* Pods stuck in **ImagePullBackOff** → wrong image tag or permission issue
+* App not accessible → Service selector mismatch
+* Deployment failed → wrong environment variables in ConfigMap
+
+### 🔥 Pro-level Add-on
+
+“I also implemented rolling updates and rollback strategy using Kubernetes Deployments to ensure zero downtime releases.”
+
+### 🎯 Follow-up Questions
+
+**Q: What happens if a pod crashes?**
+👉 Kubernetes automatically recreates it (self-healing)
+
+**Q: How do you update application version?**
+👉 Update image tag → rollout new Deployment
+
+**Q: Difference between Service and Ingress?**
+👉 Service = internal/external access
+👉 Ingress = domain-based routing (HTTP/HTTPS)
+
+💡 Tip:
+Speak this like a **flow/story**, not theory — interviewer expects real pipeline thinking.
+
+</details>
+
