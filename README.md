@@ -7,3 +7,7 @@ DevOps Interview Ready Guide
 Whenever asked anything:
 
 Follow: What → Why → How → Real Example
+
+
+> How does PostgreSQL (RDS) integrate with Kubernetes (EKS)?
+> What happens if DB goes down?
