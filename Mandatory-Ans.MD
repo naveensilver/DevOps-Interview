@@ -793,20 +793,6 @@ This approach ensures secrets are centrally managed, securely accessed, and neve
 * Credentials Store  
 * Inject during pipeline  
 
-#### 💥 Real-Time Issues You Can Mention
-
-🔴 **Secret exposed in Jenkins logs**
-* Someone printed secret accidentally  
-* Fixed using masking and credentials binding  
-
-🔴 **Pod unable to access AWS service**
-* IRSA role misconfigured  
-* Fixed trust relationship and service account mapping  
-
-🔴 **Secret not updated in pod**
-* App using old value  
-* Restarted pod to refresh secrets  
-
 #### 🔥 Pro-Level Add-On (Say this to stand out)
 
 “We used IRSA in EKS to eliminate static credentials and followed least privilege access, ensuring each service only had access to required resources.”
@@ -821,6 +807,66 @@ This approach ensures secrets are centrally managed, securely accessed, and neve
 
 **Q: How does pod access AWS?**  
 → Through service account mapped IAM role  
+
+</details>
+
+---
+
+<details>
+<summary><b>How do you rotate secrets in your project?</b></summary>
+
+<br>
+
+In our project, we followed both manual and automated secret rotation strategies depending on the type of secret.
+
+For application-level secrets like database credentials and API keys, we used AWS Secrets Manager, which provides built-in support for automatic rotation.
+
+- We configured rotation policies using AWS Lambda functions, which periodically updated the secret and synchronized it with the target service, such as RDS.
+
+For Kubernetes, since pods don’t automatically pick updated secrets, we ensured that deployments were restarted or reloaded after rotation so that new values were picked up.
+
+In CI/CD pipelines, we updated credentials in Jenkins Credentials Store and ensured pipelines always fetched secrets dynamically at runtime instead of hardcoding them.
+
+We also followed best practices like setting rotation intervals, using versioning for secrets, and ensuring zero downtime during rotation.
+
+Overall, our goal was to automate rotation wherever possible and minimize manual intervention while maintaining security and availability.
+
+---
+
+**Simple Way to Remember**
+
+
+👉 4-step flow:
+
+1️⃣ Where stored  
+- AWS Secrets Manager  
+
+2️⃣ How rotated  
+- Automatic (Lambda) / Manual  
+
+3️⃣ App update  
+- Restart pods / reload configs  
+
+4️⃣ Safety  
+- No downtime + versioning  
+
+**Real-Time Example**
+
+For example, our database credentials were rotated automatically using AWS Secrets Manager. After rotation, we triggered a rolling restart in Kubernetes so that pods picked up the new credentials without downtime.
+
+
+**Pro-Level Add-On**
+
+We ensured applications support dynamic secret reload or graceful restart to avoid downtime during rotation.
+
+**Follow-up Questions**
+
+<details>
+<summary>Click to expand</summary>
+
+👉 What happens if rotation fails?  
+👉 How do you avoid downtime?  
+👉 Do you use External Secrets Operator?  
 
 </details>
 
